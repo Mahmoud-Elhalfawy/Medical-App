@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:lite_rolling_switch/lite_rolling_switch.dart';
-import 'package:splashscreen/splashscreen.dart';
 
-import 'HomePage.dart';
+import 'package:app_trial1/Screens/ReenalScreen.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import 'Screens/HomePage.dart';
 
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Splash()));
@@ -29,7 +30,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => MyHomePage(),
+            builder: (context) => ReenalScreen(),
           ),
         );
       },

@@ -4,9 +4,10 @@ import 'package:app_trial1/Model/Case.dart';
 import 'package:app_trial1/Model/PreTermFactory.dart';
 import 'package:app_trial1/Model/TermFactory.dart';
 import 'package:app_trial1/Model/Utility.dart';
-import 'file:///D:/Android%20Studio%20Projects/app_trial1/lib/Screens/ResultPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../Screens/ResultPage.dart';
 
 class App1Controller {
   BuildContext context;

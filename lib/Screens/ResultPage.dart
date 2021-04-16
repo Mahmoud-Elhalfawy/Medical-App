@@ -1,4 +1,3 @@
-import 'file:///D:/Android%20Studio%20Projects/app_trial1/lib/Screens/GraphPage.dart';
 import 'package:app_trial1/Model/Case.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +5,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:kdgaugeview/kdgaugeview.dart';
 import 'package:photo_view/photo_view.dart';
+
+import 'GraphPage.dart';
 
 class ResultPage extends StatefulWidget {
   Case patientCase;

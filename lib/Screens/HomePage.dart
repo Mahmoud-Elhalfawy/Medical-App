@@ -4,8 +4,8 @@ import 'package:app_trial1/Controller/App1Controller.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:image/image.dart' as img;
+import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
