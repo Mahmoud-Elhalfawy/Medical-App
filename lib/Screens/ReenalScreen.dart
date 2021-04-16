@@ -80,13 +80,13 @@ class _ReenalScreenState extends State<ReenalScreen>
         hoverColor: Colors.green,
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),
-            borderSide: BorderSide(color: Colors.blue[700])),
+            borderSide: BorderSide(color: Colors.pink[800])),
         disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),
             borderSide: BorderSide(color: Colors.red[700])),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),
-            borderSide: BorderSide(color: Colors.green[700])),
+            borderSide: BorderSide(color: Colors.teal[800])),
         prefixIcon: image==null?Icon(icon):ImageIcon(AssetImage(image)),
         hintText: text,
       ),
@@ -100,7 +100,7 @@ class _ReenalScreenState extends State<ReenalScreen>
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.blueGrey[300], Colors.white],
+              colors: [Colors.pink[800], Colors.white],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
             ),
@@ -110,7 +110,7 @@ class _ReenalScreenState extends State<ReenalScreen>
               slivers: <Widget>[
                 SliverAppBar(
                   toolbarHeight: 60,
-                  backgroundColor: Colors.blueGrey,
+                  backgroundColor: Colors.pink.shade900,
                   shadowColor: Colors.black,
                   //expandedHeight: 100,
                   centerTitle: true,
@@ -120,7 +120,7 @@ class _ReenalScreenState extends State<ReenalScreen>
                   title: Text(
                     'Reenal App',
                     style: TextStyle(
-                      color: Colors.red[900],
+                      color: Colors.white,
                       fontFamily: 'Lobster',
                       fontSize: 30,
                     ),
@@ -173,7 +173,7 @@ class _ReenalScreenState extends State<ReenalScreen>
                                           MainAxisAlignment.spaceAround,
                                       children: <Widget>[
                                         Expanded(
-                                          
+
                                           child: createField(
                                               Icons.hourglass_full_sharp,
                                               PNAController,
