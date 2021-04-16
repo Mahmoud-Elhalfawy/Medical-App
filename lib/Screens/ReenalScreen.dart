@@ -20,12 +20,8 @@ class _ReenalScreenState extends State<ReenalScreen>
   final SCRController = TextEditingController();
   final ureaController = TextEditingController();
 
-  String dateAndTime;
-  bool enableHoursText = true;
-  bool createCalendarField = false;
   img.Image photo;
   bool isWeeks = false;
-  String choice;
 
   //-------------------New Code added
   //--------------------------
@@ -34,6 +30,7 @@ class _ReenalScreenState extends State<ReenalScreen>
       return FadeTransition(
         opacity: _animationController,
         child: Column(children: <Widget>[
+          
           Text(
             '(Enter PNA in Weeks)',
             style: TextStyle(
@@ -87,7 +84,10 @@ class _ReenalScreenState extends State<ReenalScreen>
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(25),
             borderSide: BorderSide(color: Colors.teal[800])),
-        prefixIcon: image==null?Icon(icon):ImageIcon(AssetImage(image)),
+        prefixIcon: image==null?Icon(icon):Padding(
+          padding: const EdgeInsets.all(11.0),
+          child: ImageIcon(AssetImage(image)),
+        ),
         hintText: text,
       ),
     );
@@ -100,7 +100,7 @@ class _ReenalScreenState extends State<ReenalScreen>
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.pink[800], Colors.white],
+              colors: [Colors.blueGrey, Colors.white],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
             ),
@@ -128,7 +128,7 @@ class _ReenalScreenState extends State<ReenalScreen>
                   leading: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                        child: Image.asset('images/bilirubin_logo.png')),
+                        child: Image.asset('images/kidney.png' , color: Colors.white,)),
                   ),
                 ),
                 SliverToBoxAdapter(
@@ -177,8 +177,8 @@ class _ReenalScreenState extends State<ReenalScreen>
                                           child: createField(
                                               Icons.hourglass_full_sharp,
                                               PNAController,
-                                              'Enter PNA',
-                                              true,"images/PNA.png"),
+                                              'PNA',
+                                              true,"images/catheter.png"),
                                         ),
                                         SizedBox(
                                           width: 30,
@@ -188,38 +188,37 @@ class _ReenalScreenState extends State<ReenalScreen>
                                             value: false,
                                             textOff: 'Days',
                                             textOn: 'Weeks',
-                                            colorOff: Colors.blueAccent,
-                                            colorOn: Colors.green,
+                                            colorOff: Colors.indigo[900],
+                                            colorOn: Colors.pink.shade900,
                                             iconOff:
-                                                Icons.calendar_today_outlined,
+                                                Icons.timelapse,
                                             iconOn:
-                                                Icons.calendar_today_outlined,
+                                                Icons.timelapse,
                                             onChanged: (bool position) {
                                               if(position!=isWeeks)
                                               setState(() {
                                                    isWeeks=position;
                                               });
-
                                             },
                                           ),
                                         ),
                                       ],
                                     ),
                                     SizedBox(
-                                      height: 30,
+                                      height: 15,
                                     ),
                                     toggleChoice(isWeeks),
                                     SizedBox(
-                                      height: 20,
+                                      height: 18,
                                     ),
                                     createField(Icons.ac_unit, GAController,
-                                        'Enter G.A (Weeks)', true,null),
+                                        'Enter G.A (Weeks)', true,'images/pills.png'),
                                     SizedBox(
                                       height: 18,
                                     ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
+                                    // SizedBox(
+                                    //   height: 10,
+                                    // ),
                                     createField(Icons.height, heightController,
                                         'Enter Height (Cm)', true,null),
                                     SizedBox(
@@ -237,7 +236,7 @@ class _ReenalScreenState extends State<ReenalScreen>
                                         Icons.access_alarm_rounded,
                                         ureaController,
                                         'Enter Urea Rate (mh/dc)',
-                                        true,null),
+                                        true,'images/urea.png'),
                                     SizedBox(
                                       height: 18,
                                     ),
@@ -257,7 +256,7 @@ class _ReenalScreenState extends State<ReenalScreen>
                                           borderRadius:
                                               new BorderRadius.circular(30.0),
                                         ),
-                                        color: Colors.green[600],
+                                        color: Colors.pink.shade900,
                                         onPressed: () async {},
                                       ),
                                     ),
