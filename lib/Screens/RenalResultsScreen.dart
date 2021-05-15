@@ -8,15 +8,16 @@ import 'package:flutter_thermometer/thermometer.dart';
 import 'package:flutter_thermometer/thermometer_paint.dart';
 import 'package:flutter_thermometer/thermometer_widget.dart';
 
-class ReenalResultsScreen extends StatefulWidget {
-  double eGFR , BONRatio;
-  String renalState;
-  ReenalResultsScreen({this.eGFR , this.BONRatio , this.renalState});
+class RenalResultsScreen extends StatefulWidget {
+  double eGFR;
+  bool adjustment;
+  bool renal;
+  RenalResultsScreen({this.eGFR , this.adjustment , this.renal});
   @override
-  _ReenalResultsScreenState createState() => _ReenalResultsScreenState();
+  _RenalResultsScreenState createState() => _RenalResultsScreenState();
 }
 
-class _ReenalResultsScreenState extends State<ReenalResultsScreen>
+class _RenalResultsScreenState extends State<RenalResultsScreen>
     with SingleTickerProviderStateMixin{
 
   AnimationController _animationController;

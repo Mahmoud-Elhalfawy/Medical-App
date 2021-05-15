@@ -10,15 +10,15 @@ abstract class Utility{
   static const TERM_IMAGE='images/term.png';
   static const TERM_X=1932;
   static const TERM_Y=1215;
-  static const SCALETERM_X=1932/(11*12*1.0);
-  static const SCALETERM_Y=1215/(6*6*1.0);
+  static const SCALETERM_X=1932/150;
+  static const SCALETERM_Y=1215/32;
 
   //pre term data
   static const PRETERM_IMAGE='images/preterm.png';
-  static const PRETERM_X=1894;
-  static const PRETERM_Y=882;
-  static const SCALE_PRETERM_X=1894/(11*12*1.0);
-  static const SCALE_PRETERM_Y=882/(6*5*1.0);
+  static const PRETERM_X=1932;
+  static const PRETERM_Y=1215;
+  static const SCALE_PRETERM_X=1932/150;
+  static const SCALE_PRETERM_Y=1215/32;
 
   //colors
   static const GREEN='Color(0xff329866)';

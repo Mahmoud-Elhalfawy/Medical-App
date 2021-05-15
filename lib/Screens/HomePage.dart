@@ -297,24 +297,26 @@ class _MyHomePageState extends State<MyHomePage>
                                                     Expanded(
                                                       child: SizedBox(
                                                         height: 95,
-                                                        child: RaisedButton(
+                                                        child: ElevatedButton(
                                                           child: Text(
                                                             'Hemolytic ',
                                                             style: TextStyle(
                                                               color: Colors.black54,
                                                               fontFamily: 'Nunito',
-                                                              fontSize: 16,
+                                                              fontSize: 14,
                                                             ),
                                                           ),
+                                                          style: ElevatedButton.styleFrom(
                                                           shape:
                                                               new RoundedRectangleBorder(
                                                             borderRadius:
                                                                 new BorderRadius
                                                                     .circular(30.0),
                                                           ),
-                                                          color: hemolytic
+                                                          primary: hemolytic
                                                               ? Colors.red[300]
                                                               : Colors.grey[100],
+                                                          ),
                                                           onPressed: () {
                                                             setState(() {
                                                               hemolytic = true;
@@ -329,24 +331,26 @@ class _MyHomePageState extends State<MyHomePage>
                                                     Expanded(
                                                       child: SizedBox(
                                                         height: 95,
-                                                        child: RaisedButton(
+                                                        child: ElevatedButton(
                                                           child: Text(
                                                             'Non-Hemolytic ',
                                                             style: TextStyle(
                                                               color: Colors.black54,
                                                               fontFamily: 'Nunito',
-                                                              fontSize: 16,
+                                                              fontSize: 14,
                                                             ),
                                                           ),
+                                                          style:ElevatedButton.styleFrom(
                                                           shape:
                                                               new RoundedRectangleBorder(
                                                             borderRadius:
                                                                 new BorderRadius
                                                                     .circular(30.0),
                                                           ),
-                                                          color: hemolytic
+                                                          primary: hemolytic
                                                               ? Colors.grey[100]
                                                               : Colors.red[300],
+                                                          ),
                                                           onPressed: () {
                                                             setState(() {
                                                               hemolytic = false;
@@ -368,7 +372,7 @@ class _MyHomePageState extends State<MyHomePage>
                                       ),
                                       SizedBox(
                                         height: 60,
-                                        child: RaisedButton(
+                                        child: ElevatedButton(
                                           child: Text(
                                             'See Results',
                                             style: TextStyle(
@@ -378,11 +382,14 @@ class _MyHomePageState extends State<MyHomePage>
                                               fontSize: 20,
                                             ),
                                           ),
-                                          shape: new RoundedRectangleBorder(
-                                            borderRadius:
-                                                new BorderRadius.circular(30.0),
+                                          style: ElevatedButton.styleFrom(
+                                            shape: new RoundedRectangleBorder(
+                                              borderRadius:
+                                              new BorderRadius.circular(30.0),
+                                            ),
+                                            primary: Colors.green[600],
                                           ),
-                                          color: Colors.green[600],
+
                                           onPressed: () async {
                                             bool result = await getResults();
                                             if (!result) {

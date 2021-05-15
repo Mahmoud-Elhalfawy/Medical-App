@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:image/image.dart' as img;
 
-class ReenalScreen extends StatefulWidget {
+class RenalScreen extends StatefulWidget {
   @override
-  _ReenalScreenState createState() => _ReenalScreenState();
+  _RenalScreenState createState() => _RenalScreenState();
 }
 
-class _ReenalScreenState extends State<ReenalScreen>
+class _RenalScreenState extends State<RenalScreen>
     with SingleTickerProviderStateMixin {
   AnimationController _animationController;
   final weightController = TextEditingController();
@@ -53,6 +53,32 @@ class _ReenalScreenState extends State<ReenalScreen>
       );
     }
   }
+
+
+
+  Future<bool> getResults() async {
+    if (weightController.text.isEmpty || heightController.text.isEmpty ||
+        PNAController.text.isEmpty  || GAController.text.isEmpty
+    || SCRController.text.isEmpty || ureaController.text.isEmpty
+    )
+      return false;
+
+    App1Controller app1Controller = App1Controller(context);
+    double weight = double.parse(weightController.text.toString());
+    double height = double.parse(heightController.text.toString());
+    double pna = double.parse(PNAController.text.toString());
+    double ga=double.parse(GAController.text.toString());
+    double urea=double.parse(ureaController.text.toString());
+    double scr=double.parse(SCRController.text.toString());
+
+    return await app1Controller.calculateRenalResult(
+        weight, height, pna, ga, urea, scr,isWeeks?0:1);
+  }
+
+
+
+
+
 
   void initState() {
     super.initState();
@@ -118,7 +144,7 @@ class _ReenalScreenState extends State<ReenalScreen>
                   leadingWidth: 100,
                   stretch: true,
                   title: Text(
-                    'Reenal App',
+                    'Renal App',
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'Lobster',
@@ -212,7 +238,7 @@ class _ReenalScreenState extends State<ReenalScreen>
                                       height: 18,
                                     ),
                                     createField(Icons.ac_unit, GAController,
-                                        'Enter G.A (Weeks)', true,'images/pills.png'),
+                                        'Enter G.A (Days)', true,'images/pills.png'),
                                     SizedBox(
                                       height: 18,
                                     ),
@@ -257,7 +283,9 @@ class _ReenalScreenState extends State<ReenalScreen>
                                               new BorderRadius.circular(30.0),
                                         ),
                                         color: Colors.pink.shade900,
-                                        onPressed: () async {},
+                                        onPressed: () async {
+                                          getResults();
+                                        },
                                       ),
                                     ),
                                   ],

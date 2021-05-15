@@ -1,6 +1,6 @@
 
-import 'package:app_trial1/Screens/ReenalResultsScreen.dart';
-import 'package:app_trial1/Screens/ReenalScreen.dart';
+import 'package:app_trial1/Screens/RenalResultsScreen.dart';
+import 'package:app_trial1/Screens/RenalScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +31,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => ReenalResultsScreen(),
+            builder: (context) => MyHomePage(),
           ),
         );
       },

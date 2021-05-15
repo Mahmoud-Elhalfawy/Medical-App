@@ -2,8 +2,10 @@ import 'dart:collection';
 
 import 'package:app_trial1/Model/Case.dart';
 import 'package:app_trial1/Model/PreTermFactory.dart';
+import 'package:app_trial1/Model/RenalFactory.dart';
 import 'package:app_trial1/Model/TermFactory.dart';
 import 'package:app_trial1/Model/Utility.dart';
+import 'package:app_trial1/Screens/RenalResultsScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -30,12 +32,12 @@ class App1Controller {
     Case patientCase;
     if(serum<0)
       serum=0;
-    else if(serum>35)
-      serum=35;
+    else if(serum>=32)
+      serum=32;
     if(ageController.text.isNotEmpty && enableHoursText) {
       age = double.parse(ageController.text.toString())>=12?double.parse(ageController.text.toString()):12;
-      if(age>144)
-        age=144;
+      if(age>=144)
+        age=143;
     }
       else if (!enableHoursText) {
         List<String> dateList = dateAndTime.split(" ")[0].split("-");
@@ -47,26 +49,26 @@ class App1Controller {
             ((now.minute - int.parse(timeList[1])) / 60)) ;
         if(age<12)
           age=12;
-        else if(age>144)
-          age=144;
+        else if(age>=144)
+          age=143;
         print("age : $age");
       } else{
       age=(now.hour+(now.minute/60))>=12?(now.hour+(now.minute/60)):12;
-      if(age>144)
-        age=144;
+      if(age>=144)
+        age=143;
     }
 
     if (weight < 2500) {
       term = false;
-      x = (age - 12) * Utility.SCALE_PRETERM_X;
+      x = (age) * Utility.SCALE_PRETERM_X;
       y = serum * Utility.SCALE_PRETERM_Y;
-      y = Utility.PRETERM_Y - y + (-2*serum);
+      y = Utility.PRETERM_Y - y;
       color = await Utility.getImage(Utility.PRETERM_IMAGE, x, y);
     } else {
       term=true;
-      x = (age - 12) * Utility.SCALETERM_X;
+      x = (age) * Utility.SCALETERM_X;
       y = serum * Utility.SCALETERM_Y;
-      y = Utility.TERM_Y - y + (-3*serum);
+      y = Utility.TERM_Y - y;
       color = await Utility.getImage(Utility.TERM_IMAGE, x, y);
     }
 
@@ -111,6 +113,51 @@ class App1Controller {
   }
 
 
+
+
+
+  Future<bool> calculateRenalResult(double weight,double height,double pna
+      ,double ga,double urea,double scr,int isWeeks) async{
+  double k;
+  double gaWeeks=ga/7.0;
+
+  bool adjustment=true;
+  bool renal=true;
+  if(gaWeeks<38)
+    k=0.33;
+  else
+    k=0.45;
+
+
+  double eGFR=(k*height)/scr;
+
+  if(isWeeks==1){
+    pna=pna*7;
+  }else if(isWeeks==2){
+    pna=pna*30;
+  }
+
+  RenalFactory renalFactory=RenalFactory();
+  var range=renalFactory.getRange(pna, gaWeeks);
+  if(eGFR>=range[0] && eGFR<=range[1])
+    adjustment=false;
+
+  double BUN=urea/2.18;
+  double ratio=BUN/scr;
+
+  if(ratio>20)
+    renal=false;
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => RenalResultsScreen(eGFR:eGFR,adjustment:adjustment,renal:renal),
+    ),
+  );
+
+return true;
+
+  }
 
 
 
